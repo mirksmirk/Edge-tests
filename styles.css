@@ -1033,8 +1033,26 @@ body {
 /* === Recurring Notifications === */
 .recurring-notifications {
     display: flex;
-    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 1rem;
+}
+
+.total-runs {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+}
+
+.total-runs-value {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.total-runs-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
 }
 
 .checkbox-label {

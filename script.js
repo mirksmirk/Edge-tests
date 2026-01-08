@@ -332,14 +332,12 @@ function openEditModal(card) {
     const title = card.querySelector('.recurring-title')?.textContent || '';
     const description = card.querySelector('.recurring-description')?.textContent || '';
     const frequency = card.querySelector('.frequency-value')?.textContent || '';
-    const emailChecked = card.querySelector('.recurring-notifications input:first-of-type')?.checked || false;
-    const inAppChecked = card.querySelector('.recurring-notifications input:last-of-type')?.checked || false;
+    const emailChecked = card.querySelector('.recurring-notifications input')?.checked || false;
     
     // Populate form fields
     document.getElementById('promptTitle').value = title;
     document.getElementById('promptText').value = description;
     document.getElementById('emailNotif').checked = emailChecked;
-    document.getElementById('inAppNotif').checked = inAppChecked;
     
     // Parse frequency and set values
     const frequencySelect = document.getElementById('frequency');
@@ -418,9 +416,8 @@ function openResultsPage(card) {
     const title = card.querySelector('.recurring-title')?.textContent || '';
     const description = card.querySelector('.recurring-description')?.textContent || '';
     const frequency = card.querySelector('.frequency-value')?.textContent || '';
-    const totalRuns = card.querySelector('.results-count')?.textContent || '0';
-    const emailChecked = card.querySelector('.recurring-notifications label:first-of-type input')?.checked || false;
-    const inAppChecked = card.querySelector('.recurring-notifications label:last-of-type input')?.checked || false;
+    const totalRuns = card.querySelector('.total-runs-value')?.textContent || '0';
+    const emailChecked = card.querySelector('.recurring-notifications input')?.checked || false;
     
     // Store current data for editing
     currentResultsData = {
@@ -429,8 +426,7 @@ function openResultsPage(card) {
         description: description,
         frequency: frequency,
         totalRuns: totalRuns,
-        emailChecked: emailChecked,
-        inAppChecked: inAppChecked
+        emailChecked: emailChecked
     };
     
     // Populate results page
@@ -442,13 +438,9 @@ function openResultsPage(card) {
     
     // Update notification badges
     const emailBadge = document.getElementById('resultsEmailBadge');
-    const inAppBadge = document.getElementById('resultsInAppBadge');
     
     if (emailBadge) {
         emailBadge.classList.toggle('active', emailChecked);
-    }
-    if (inAppBadge) {
-        inAppBadge.classList.toggle('active', inAppChecked);
     }
     
     // Navigate to results page
@@ -465,7 +457,6 @@ function openEditModalFromResults() {
     document.getElementById('promptTitle').value = currentResultsData.title;
     document.getElementById('promptText').value = currentResultsData.description;
     document.getElementById('emailNotif').checked = currentResultsData.emailChecked;
-    document.getElementById('inAppNotif').checked = currentResultsData.inAppChecked;
     
     // Parse frequency and set values
     const frequencySelect = document.getElementById('frequency');
@@ -545,7 +536,6 @@ function saveChanges(card) {
     const startDate = document.getElementById('startDate').value;
     const time = document.getElementById('notificationTime').value;
     const emailNotif = document.getElementById('emailNotif').checked;
-    const inAppNotif = document.getElementById('inAppNotif').checked;
     
     // Format time for display
     let displayTime = '';
@@ -571,14 +561,12 @@ function saveChanges(card) {
         const titleEl = card.querySelector('.recurring-title');
         const descEl = card.querySelector('.recurring-description');
         const freqEl = card.querySelector('.frequency-value');
-        const emailCheckbox = card.querySelector('.recurring-notifications label:first-of-type input');
-        const inAppCheckbox = card.querySelector('.recurring-notifications label:last-of-type input');
+        const emailCheckbox = card.querySelector('.recurring-notifications input');
         
         if (titleEl) titleEl.textContent = title;
         if (descEl) descEl.textContent = description;
         if (freqEl) freqEl.textContent = frequencyDisplay;
         if (emailCheckbox) emailCheckbox.checked = emailNotif;
-        if (inAppCheckbox) inAppCheckbox.checked = inAppNotif;
     }
     
     // Update results page if we're viewing it
@@ -589,17 +577,14 @@ function saveChanges(card) {
         document.getElementById('resultsFrequency').textContent = frequencyDisplay;
         
         const emailBadge = document.getElementById('resultsEmailBadge');
-        const inAppBadge = document.getElementById('resultsInAppBadge');
         
         if (emailBadge) emailBadge.classList.toggle('active', emailNotif);
-        if (inAppBadge) inAppBadge.classList.toggle('active', inAppNotif);
         
         // Update stored data
         currentResultsData.title = title;
         currentResultsData.description = description;
         currentResultsData.frequency = frequencyDisplay;
         currentResultsData.emailChecked = emailNotif;
-        currentResultsData.inAppChecked = inAppNotif;
         
         // Also update the original card
         if (currentResultsData.card) {
@@ -607,16 +592,14 @@ function saveChanges(card) {
             const titleEl = origCard.querySelector('.recurring-title');
             const descEl = origCard.querySelector('.recurring-description');
             const freqEl = origCard.querySelector('.frequency-value');
-            const emailCheckbox = origCard.querySelector('.recurring-notifications label:first-of-type input');
-            const inAppCheckbox = origCard.querySelector('.recurring-notifications label:last-of-type input');
+            const emailCheckbox = origCard.querySelector('.recurring-notifications input');
             
             if (titleEl) titleEl.textContent = title;
             if (descEl) descEl.textContent = description;
             if (freqEl) freqEl.textContent = frequencyDisplay;
             if (emailCheckbox) emailCheckbox.checked = emailNotif;
-            if (inAppCheckbox) inAppCheckbox.checked = inAppNotif;
         }
     }
     
-    console.log('Saved changes:', { title, description, frequency, startDate, time, emailNotif, inAppNotif });
+    console.log('Saved changes:', { title, description, frequency, startDate, time, emailNotif });
 }
