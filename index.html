@@ -423,6 +423,156 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Results Page -->
+            <div class="page page-results" id="page-results">
+                <div class="results-container">
+                    <!-- Breadcrumb -->
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <a href="#" class="breadcrumb-link" data-page="recurring">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 18l-6-6 6-6"/>
+                            </svg>
+                            Recurring Prompts
+                        </a>
+                        <span class="breadcrumb-separator">/</span>
+                        <span class="breadcrumb-current" id="resultsBreadcrumbTitle">Results</span>
+                    </nav>
+
+                    <!-- Results Header -->
+                    <div class="results-header">
+                        <div class="results-header-main">
+                            <div class="results-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M23 4v6h-6"/>
+                                    <path d="M1 20v-6h6"/>
+                                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                                </svg>
+                            </div>
+                            <div class="results-header-text">
+                                <h1 class="results-title" id="resultsTitle">Daily Market Sentiment Analysis</h1>
+                                <p class="results-description" id="resultsDescription">Summary of market sentiment based on news articles and social media signals for the S&P 500</p>
+                            </div>
+                        </div>
+                        <div class="results-header-meta">
+                            <div class="results-meta-item">
+                                <span class="meta-label">Frequency</span>
+                                <span class="meta-value" id="resultsFrequency">Daily at 9:00 AM</span>
+                            </div>
+                            <div class="results-meta-item">
+                                <span class="meta-label">Total Runs</span>
+                                <span class="meta-value" id="resultsTotalRuns">47</span>
+                            </div>
+                            <div class="results-meta-item results-notifications">
+                                <span class="meta-label">Notifications</span>
+                                <div class="notification-badges">
+                                    <span class="notification-badge" id="resultsEmailBadge">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                            <path d="M22 6l-10 7L2 6"/>
+                                        </svg>
+                                        Email
+                                    </span>
+                                    <span class="notification-badge" id="resultsInAppBadge">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                                        </svg>
+                                        In-app
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results List -->
+                    <div class="results-list">
+                        <div class="result-card">
+                            <div class="result-card-header">
+                                <span class="result-date">December 17, 2025 at 9:00 AM</span>
+                                <span class="result-status success">Completed</span>
+                            </div>
+                            <p class="result-preview">Market sentiment for the S&P 500 turned notably bullish today, driven by stronger-than-expected retail sales data and dovish Fed commentary. Social media sentiment analysis shows a 23% increase in positive mentions...</p>
+                            <button class="btn btn-outline btn-view-result">
+                                View Full Result
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-card-header">
+                                <span class="result-date">December 16, 2025 at 9:00 AM</span>
+                                <span class="result-status success">Completed</span>
+                            </div>
+                            <p class="result-preview">Mixed sentiment prevailed across S&P 500 constituents as investors digested inflation data. News coverage leaned cautious with focus on upcoming Fed meeting, while social media showed divergent views on tech...</p>
+                            <button class="btn btn-outline btn-view-result">
+                                View Full Result
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-card-header">
+                                <span class="result-date">December 15, 2025 at 9:00 AM</span>
+                                <span class="result-status success">Completed</span>
+                            </div>
+                            <p class="result-preview">Bearish sentiment dominated the market narrative following disappointing manufacturing PMI numbers. News analysis indicates heightened concern over global demand slowdown, particularly affecting industrials...</p>
+                            <button class="btn btn-outline btn-view-result">
+                                View Full Result
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-card-header">
+                                <span class="result-date">December 14, 2025 at 9:00 AM</span>
+                                <span class="result-status success">Completed</span>
+                            </div>
+                            <p class="result-preview">Weekend positioning data suggests institutional investors are maintaining cautious exposure. Sentiment analysis of financial news shows neutral-to-positive bias with focus on year-end portfolio rebalancing...</p>
+                            <button class="btn btn-outline btn-view-result">
+                                View Full Result
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-card-header">
+                                <span class="result-date">December 13, 2025 at 9:00 AM</span>
+                                <span class="result-status success">Completed</span>
+                            </div>
+                            <p class="result-preview">Strong bullish momentum detected across major indices. Social media engagement spiked 34% following positive earnings surprises from key tech names. News sentiment particularly favorable for growth stocks...</p>
+                            <button class="btn btn-outline btn-view-result">
+                                View Full Result
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-card-header">
+                                <span class="result-date">December 12, 2025 at 9:00 AM</span>
+                                <span class="result-status success">Completed</span>
+                            </div>
+                            <p class="result-preview">Neutral market sentiment with slight bearish undertones as traders await key economic releases. Analysis of options flow suggests hedging activity has increased, consistent with cautious positioning ahead...</p>
+                            <button class="btn btn-outline btn-view-result">
+                                View Full Result
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
 
         <!-- Right Sidebar (History) -->

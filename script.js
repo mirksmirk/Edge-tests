@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTerminalInput();
     initPageNavigation();
     initEditModal();
+    initResultsPage();
 });
 
 // === Sidebar Toggle ===
@@ -293,6 +294,92 @@ function openEditModal(card) {
     setTimeout(() => {
         document.getElementById('promptTitle').focus();
     }, 100);
+}
+
+// === Results Page ===
+function initResultsPage() {
+    // Handle Results button click
+    document.addEventListener('click', (e) => {
+        const resultsBtn = e.target.closest('.btn-results');
+        if (resultsBtn) {
+            e.preventDefault();
+            const card = resultsBtn.closest('.recurring-card');
+            openResultsPage(card);
+        }
+    });
+    
+    // Handle breadcrumb back navigation
+    document.addEventListener('click', (e) => {
+        const breadcrumbLink = e.target.closest('.breadcrumb-link');
+        if (breadcrumbLink) {
+            e.preventDefault();
+            const targetPage = breadcrumbLink.dataset.page;
+            navigateToPage(targetPage);
+        }
+    });
+}
+
+// Open results page with card data
+function openResultsPage(card) {
+    // Get card data
+    const title = card.querySelector('.recurring-title')?.textContent || '';
+    const description = card.querySelector('.recurring-description')?.textContent || '';
+    const frequency = card.querySelector('.frequency-value')?.textContent || '';
+    const totalRuns = card.querySelector('.results-count')?.textContent || '0';
+    const emailChecked = card.querySelector('.recurring-notifications label:first-of-type input')?.checked || false;
+    const inAppChecked = card.querySelector('.recurring-notifications label:last-of-type input')?.checked || false;
+    
+    // Populate results page
+    document.getElementById('resultsBreadcrumbTitle').textContent = title;
+    document.getElementById('resultsTitle').textContent = title;
+    document.getElementById('resultsDescription').textContent = description;
+    document.getElementById('resultsFrequency').textContent = frequency;
+    document.getElementById('resultsTotalRuns').textContent = totalRuns;
+    
+    // Update notification badges
+    const emailBadge = document.getElementById('resultsEmailBadge');
+    const inAppBadge = document.getElementById('resultsInAppBadge');
+    
+    if (emailBadge) {
+        emailBadge.classList.toggle('active', emailChecked);
+    }
+    if (inAppBadge) {
+        inAppBadge.classList.toggle('active', inAppChecked);
+    }
+    
+    // Navigate to results page
+    navigateToPage('results');
+}
+
+// Navigate to a specific page
+function navigateToPage(pageName) {
+    const pages = document.querySelectorAll('.page');
+    const navItems = document.querySelectorAll('.nav-item[data-page]');
+    
+    // Hide all pages and show target
+    pages.forEach(page => {
+        page.classList.remove('active');
+        if (page.id === `page-${pageName}`) {
+            page.classList.add('active');
+        }
+    });
+    
+    // Update nav active state
+    navItems.forEach(nav => {
+        nav.classList.remove('active');
+        if (nav.dataset.page === pageName) {
+            nav.classList.add('active');
+        }
+    });
+    
+    // Special case: results page should highlight recurring nav
+    if (pageName === 'results') {
+        navItems.forEach(nav => {
+            if (nav.dataset.page === 'recurring') {
+                nav.classList.add('active');
+            }
+        });
+    }
 }
 
 // Save changes back to card
