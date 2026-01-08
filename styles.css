@@ -929,6 +929,24 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.recurring-last-run {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: auto;
+}
+
+.last-run-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.last-run-value {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
 .recurring-icon {
     width: 20px;
     height: 20px;
