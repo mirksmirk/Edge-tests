@@ -23,15 +23,14 @@
             </div>
             
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active">
+                <a href="#" class="nav-item active" data-page="terminal">
                     <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <rect x="4" y="4" width="16" height="16" rx="2"/>
-                        <path d="M4 9h16"/>
-                        <path d="M9 4v5"/>
+                        <polyline points="4,17 10,11 4,5"/>
+                        <line x1="12" y1="19" x2="20" y2="19"/>
                     </svg>
                     <span>Terminal</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-page="toolkit">
                     <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <rect x="3" y="3" width="7" height="7" rx="1"/>
                         <rect x="14" y="3" width="7" height="7" rx="1"/>
@@ -40,7 +39,15 @@
                     </svg>
                     <span>Agent Toolkit</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-page="recurring">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M23 4v6h-6"/>
+                        <path d="M1 20v-6h6"/>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                    </svg>
+                    <span>Recurring</span>
+                </a>
+                <a href="#" class="nav-item" data-page="reports">
                     <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                         <polyline points="14,2 14,8 20,8"/>
@@ -53,152 +60,557 @@
             
             <div class="sidebar-footer">
                 <div class="user-profile">
-                    <div class="user-avatar">EM</div>
-                    <div class="user-info">
-                        <span class="user-name">Elisa Mirkil</span>
-                        <span class="user-email">elisamirkil@gmail.com</span>
+                    <div class="user-avatar">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Elisa" alt="Elisa Mirkin" />
                     </div>
-                    <button class="settings-btn" aria-label="Settings">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                        </svg>
-                    </button>
+                    <div class="user-info">
+                        <span class="user-name">Elisa Mirkin</span>
+                        <span class="user-email">elisamirkin@gmail.com</span>
+                    </div>
+                    <div class="user-actions">
+                        <button class="icon-btn" aria-label="Notifications">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                            </svg>
+                        </button>
+                        <button class="icon-btn" aria-label="Settings">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
-            <div class="terminal-container">
-                <div class="terminal-header">
-                    <h1 class="terminal-logo">EDGE</h1>
-                    <button class="history-btn" id="toggleHistory">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12,6 12,12 16,14"/>
-                        </svg>
-                        <span>History</span>
-                    </button>
-                </div>
-                
-                <div class="input-container">
-                    <div class="input-wrapper">
-                        <span class="input-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polygon points="5,3 19,12 5,21 5,3"/>
+            <!-- Terminal Page -->
+            <div class="page page-terminal active" id="page-terminal">
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <h1 class="terminal-logo">EDGE</h1>
+                        <button class="history-btn" id="toggleHistory">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12,6 12,12 16,14"/>
                             </svg>
-                        </span>
-                        <input type="text" class="terminal-input" placeholder="What job can I run for you?" />
+                            <span>History</span>
+                        </button>
+                    </div>
+                    
+                    <div class="input-container">
+                        <div class="input-wrapper">
+                            <span class="input-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5,3 19,12 5,21 5,3"/>
+                                </svg>
+                            </span>
+                            <input type="text" class="terminal-input" placeholder="What job can I run for you?" />
+                        </div>
+                    </div>
+                    
+                    <section class="agents-section">
+                        <h2 class="section-title">CORE AGENTS</h2>
+                        
+                        <div class="agent-list">
+                            <div class="agent-card" data-agent="market">
+                                <div class="agent-header">
+                                    <div class="agent-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path d="M3 3v18h18"/>
+                                            <path d="M7 16l4-4 4 4 5-6"/>
+                                        </svg>
+                                    </div>
+                                    <div class="agent-info">
+                                        <h3>Market Intelligence</h3>
+                                        <p>For narratives, drivers, positioning, and context</p>
+                                    </div>
+                                    <button class="expand-btn" aria-label="Expand">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9l6 6 6-6"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="agent-content">
+                                    <p>Access real-time market data, sentiment analysis, and contextual insights to inform your trading decisions.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="agent-card" data-agent="quant">
+                                <div class="agent-header">
+                                    <div class="agent-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                            <path d="M3 9h18"/>
+                                            <path d="M9 3v18"/>
+                                        </svg>
+                                    </div>
+                                    <div class="agent-info">
+                                        <h3>Quantitative Analysis</h3>
+                                        <p>For historical relationships, distributions, and signals</p>
+                                    </div>
+                                    <button class="expand-btn" aria-label="Expand">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9l6 6 6-6"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="agent-content">
+                                    <p>Analyze historical data patterns, statistical distributions, and generate quantitative signals for systematic trading.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="agent-card" data-agent="scenario">
+                                <div class="agent-header">
+                                    <div class="agent-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                            <line x1="12" y1="9" x2="12" y2="13"/>
+                                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                        </svg>
+                                    </div>
+                                    <div class="agent-info">
+                                        <h3>Scenario Testing</h3>
+                                        <p>For hypothetical shocks, paths, and sensitivities</p>
+                                    </div>
+                                    <button class="expand-btn" aria-label="Expand">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9l6 6 6-6"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="agent-content">
+                                    <p>Model hypothetical market scenarios, stress test portfolios, and analyze sensitivity to various risk factors.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="agent-card" data-agent="idea">
+                                <div class="agent-header">
+                                    <div class="agent-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path d="M9 18h6"/>
+                                            <path d="M10 22h4"/>
+                                            <path d="M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="agent-info">
+                                        <h3>Idea Generation</h3>
+                                        <p>For trades, structures, hedges, and asymmetry</p>
+                                    </div>
+                                    <button class="expand-btn" aria-label="Expand">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9l6 6 6-6"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="agent-content">
+                                    <p>Generate trade ideas, optimal structures, hedging strategies, and identify asymmetric opportunities.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Recurring Prompts Page -->
+            <div class="page page-recurring" id="page-recurring">
+                <div class="recurring-container">
+                    <div class="page-header">
+                        <div class="page-header-text">
+                            <h1 class="page-title">Recurring Prompts</h1>
+                            <p class="page-subtitle">Manage your scheduled prompts and notifications</p>
+                        </div>
+                        <button class="btn btn-primary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                            <span>New Recurring Prompt</span>
+                        </button>
+                    </div>
+
+                    <div class="recurring-list">
+                        <!-- Recurring Prompt Card 1 -->
+                        <div class="recurring-card">
+                            <div class="recurring-card-header">
+                                <div class="recurring-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M23 4v6h-6"/>
+                                        <path d="M1 20v-6h6"/>
+                                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                                    </svg>
+                                </div>
+                                <h3 class="recurring-title">Daily Market Sentiment Analysis</h3>
+                                <button class="menu-btn" aria-label="More options">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="5" r="1"/>
+                                        <circle cx="12" cy="12" r="1"/>
+                                        <circle cx="12" cy="19" r="1"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="recurring-description">Summary of market sentiment based on news articles and social media signals for the S&P 500</p>
+                            
+                            <div class="recurring-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">Frequency</span>
+                                    <span class="meta-value">Daily at 9:00 AM</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Last Run</span>
+                                    <span class="meta-value">Dec 17, 9:00 AM</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Next Run</span>
+                                    <span class="meta-value">Dec 18, 9:00 AM</span>
+                                </div>
+                            </div>
+
+                            <div class="recurring-notifications">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                        <path d="M22 6l-10 7L2 6"/>
+                                    </svg>
+                                    <span>Email notifications</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                                    </svg>
+                                    <span>In-app notifications</span>
+                                </label>
+                            </div>
+
+                            <div class="recurring-actions">
+                                <div class="actions-left">
+                                    <button class="btn btn-outline">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                        </svg>
+                                        <span>Edit Prompt</span>
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span>Change Frequency</span>
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M23 4v6h-6"/>
+                                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                                        </svg>
+                                        <span>View History</span>
+                                    </button>
+                                </div>
+                                <button class="btn btn-ghost btn-danger">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="3,6 5,6 21,6"/>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                    </svg>
+                                    <span>Delete</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Recurring Prompt Card 2 -->
+                        <div class="recurring-card">
+                            <div class="recurring-card-header">
+                                <div class="recurring-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M23 4v6h-6"/>
+                                        <path d="M1 20v-6h6"/>
+                                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                                    </svg>
+                                </div>
+                                <h3 class="recurring-title">Corn Futures Volatility Report</h3>
+                                <button class="menu-btn" aria-label="More options">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="5" r="1"/>
+                                        <circle cx="12" cy="12" r="1"/>
+                                        <circle cx="12" cy="19" r="1"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="recurring-description">Analysis of implied vs. realized volatility for front-month corn futures contracts, highlighting potential trading opportunities</p>
+                            
+                            <div class="recurring-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">Frequency</span>
+                                    <span class="meta-value">Daily at 8:30 AM</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Last Run</span>
+                                    <span class="meta-value">Dec 17, 8:30 AM</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Next Run</span>
+                                    <span class="meta-value">Dec 18, 8:30 AM</span>
+                                </div>
+                            </div>
+
+                            <div class="recurring-notifications">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                        <path d="M22 6l-10 7L2 6"/>
+                                    </svg>
+                                    <span>Email notifications</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkbox-custom"></span>
+                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                                    </svg>
+                                    <span>In-app notifications</span>
+                                </label>
+                            </div>
+
+                            <div class="recurring-actions">
+                                <div class="actions-left">
+                                    <button class="btn btn-outline">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                        </svg>
+                                        <span>Edit Prompt</span>
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span>Change Frequency</span>
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M23 4v6h-6"/>
+                                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                                        </svg>
+                                        <span>View History</span>
+                                    </button>
+                                </div>
+                                <button class="btn btn-ghost btn-danger">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="3,6 5,6 21,6"/>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                    </svg>
+                                    <span>Delete</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Recurring Prompt Card 3 -->
+                        <div class="recurring-card">
+                            <div class="recurring-card-header">
+                                <div class="recurring-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M23 4v6h-6"/>
+                                        <path d="M1 20v-6h6"/>
+                                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                                    </svg>
+                                </div>
+                                <h3 class="recurring-title">Weekly Corn Export Summary</h3>
+                                <button class="menu-btn" aria-label="More options">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="5" r="1"/>
+                                        <circle cx="12" cy="12" r="1"/>
+                                        <circle cx="12" cy="19" r="1"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="recurring-description">Comprehensive analysis of weekly corn export sales, shipments, and outstanding commitments by destination</p>
+                            
+                            <div class="recurring-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">Frequency</span>
+                                    <span class="meta-value">Weekly on Mondays at 10:00 AM</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Last Run</span>
+                                    <span class="meta-value">Dec 16, 10:00 AM</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Next Run</span>
+                                    <span class="meta-value">Dec 23, 10:00 AM</span>
+                                </div>
+                            </div>
+
+                            <div class="recurring-notifications">
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkbox-custom"></span>
+                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                        <path d="M22 6l-10 7L2 6"/>
+                                    </svg>
+                                    <span>Email notifications</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                                    </svg>
+                                    <span>In-app notifications</span>
+                                </label>
+                            </div>
+
+                            <div class="recurring-actions">
+                                <div class="actions-left">
+                                    <button class="btn btn-outline">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                        </svg>
+                                        <span>Edit Prompt</span>
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span>Change Frequency</span>
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M23 4v6h-6"/>
+                                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                                        </svg>
+                                        <span>View History</span>
+                                    </button>
+                                </div>
+                                <button class="btn btn-ghost btn-danger">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="3,6 5,6 21,6"/>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                    </svg>
+                                    <span>Delete</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Recurring Prompt Card 4 -->
+                        <div class="recurring-card">
+                            <div class="recurring-card-header">
+                                <div class="recurring-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M23 4v6h-6"/>
+                                        <path d="M1 20v-6h6"/>
+                                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                                    </svg>
+                                </div>
+                                <h3 class="recurring-title">Monthly Positioning Report</h3>
+                                <button class="menu-btn" aria-label="More options">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="5" r="1"/>
+                                        <circle cx="12" cy="12" r="1"/>
+                                        <circle cx="12" cy="19" r="1"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="recurring-description">Deep dive into CFTC Commitment of Traders data, analyzing net positioning changes across managed money and commercials</p>
+                            
+                            <div class="recurring-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">Frequency</span>
+                                    <span class="meta-value">Monthly on 1st at 8:00 AM</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Last Run</span>
+                                    <span class="meta-value">Dec 1, 8:00 AM</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Next Run</span>
+                                    <span class="meta-value">Jan 1, 8:00 AM</span>
+                                </div>
+                            </div>
+
+                            <div class="recurring-notifications">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                        <path d="M22 6l-10 7L2 6"/>
+                                    </svg>
+                                    <span>Email notifications</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                                    </svg>
+                                    <span>In-app notifications</span>
+                                </label>
+                            </div>
+
+                            <div class="recurring-actions">
+                                <div class="actions-left">
+                                    <button class="btn btn-outline">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                        </svg>
+                                        <span>Edit Prompt</span>
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span>Change Frequency</span>
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M23 4v6h-6"/>
+                                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                                        </svg>
+                                        <span>View History</span>
+                                    </button>
+                                </div>
+                                <button class="btn btn-ghost btn-danger">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="3,6 5,6 21,6"/>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                    </svg>
+                                    <span>Delete</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <section class="agents-section">
-                    <h2 class="section-title">CORE AGENTS</h2>
-                    
-                    <div class="agent-list">
-                        <div class="agent-card" data-agent="market">
-                            <div class="agent-header">
-                                <div class="agent-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M3 3v18h18"/>
-                                        <path d="M7 16l4-4 4 4 5-6"/>
-                                    </svg>
-                                </div>
-                                <div class="agent-info">
-                                    <h3>Market Intelligence</h3>
-                                    <p>For narratives, drivers, positioning, and context</p>
-                                </div>
-                                <button class="expand-btn" aria-label="Expand">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M6 9l6 6 6-6"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="agent-content">
-                                <p>Access real-time market data, sentiment analysis, and contextual insights to inform your trading decisions.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="agent-card" data-agent="quant">
-                            <div class="agent-header">
-                                <div class="agent-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                        <path d="M3 9h18"/>
-                                        <path d="M9 3v18"/>
-                                    </svg>
-                                </div>
-                                <div class="agent-info">
-                                    <h3>Quantitative Analysis</h3>
-                                    <p>For historical relationships, distributions, and signals</p>
-                                </div>
-                                <button class="expand-btn" aria-label="Expand">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M6 9l6 6 6-6"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="agent-content">
-                                <p>Analyze historical data patterns, statistical distributions, and generate quantitative signals for systematic trading.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="agent-card" data-agent="scenario">
-                            <div class="agent-header">
-                                <div class="agent-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                                        <line x1="12" y1="9" x2="12" y2="13"/>
-                                        <line x1="12" y1="17" x2="12.01" y2="17"/>
-                                    </svg>
-                                </div>
-                                <div class="agent-info">
-                                    <h3>Scenario Testing</h3>
-                                    <p>For hypothetical shocks, paths, and sensitivities</p>
-                                </div>
-                                <button class="expand-btn" aria-label="Expand">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M6 9l6 6 6-6"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="agent-content">
-                                <p>Model hypothetical market scenarios, stress test portfolios, and analyze sensitivity to various risk factors.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="agent-card" data-agent="idea">
-                            <div class="agent-header">
-                                <div class="agent-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M9 18h6"/>
-                                        <path d="M10 22h4"/>
-                                        <path d="M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"/>
-                                    </svg>
-                                </div>
-                                <div class="agent-info">
-                                    <h3>Idea Generation</h3>
-                                    <p>For trades, structures, hedges, and asymmetry</p>
-                                </div>
-                                <button class="expand-btn" aria-label="Expand">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M6 9l6 6 6-6"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="agent-content">
-                                <p>Generate trade ideas, optimal structures, hedging strategies, and identify asymmetric opportunities.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div>
         </main>
 
         <!-- Right Sidebar (History) -->
         <aside class="sidebar sidebar-right" id="sidebarRight">
-            <div class="sidebar-header">
+            <div class="sidebar-header sidebar-right-header">
+                <button class="history-btn active" id="toggleHistoryInner">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12,6 12,12 16,14"/>
+                    </svg>
+                    <span>History</span>
+                </button>
                 <div class="search-container">
                     <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8"/>

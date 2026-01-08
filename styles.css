@@ -615,3 +615,377 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-muted);
 }
+
+/* === Page System === */
+.page {
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.page.active {
+    display: block;
+}
+
+/* === User Avatar with Image === */
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-actions {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.icon-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.icon-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-secondary);
+}
+
+/* === Right Sidebar Header Update === */
+.sidebar-right-header {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.sidebar-right-header .history-btn {
+    position: static;
+    width: 100%;
+    justify-content: center;
+}
+
+/* === Recurring Prompts Page === */
+.recurring-container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.page-header-text {
+    flex: 1;
+}
+
+.page-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.page-subtitle {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+}
+
+/* === Buttons === */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: var(--text-primary);
+    color: white;
+    border-color: var(--text-primary);
+}
+
+.btn-primary:hover {
+    background: #333;
+    border-color: #333;
+}
+
+.btn-outline {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+.btn-outline:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border-color: transparent;
+}
+
+.btn-ghost:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.btn-danger {
+    color: #dc2626;
+}
+
+.btn-danger:hover {
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+/* === Recurring List === */
+.recurring-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* === Recurring Card === */
+.recurring-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    transition: all var(--transition-fast);
+}
+
+.recurring-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-light);
+}
+
+.recurring-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.recurring-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.recurring-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.recurring-title {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.menu-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin: -0.25rem -0.25rem 0 0;
+}
+
+.menu-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-secondary);
+}
+
+.recurring-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    padding-left: 2.25rem;
+}
+
+/* === Recurring Meta === */
+.recurring-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding-left: 2.25rem;
+    margin-bottom: 1rem;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.meta-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.meta-value {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* === Recurring Notifications === */
+.recurring-notifications {
+    display: flex;
+    gap: 1.5rem;
+    padding-left: 2.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+    background: var(--bg-secondary);
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.checkbox-label input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-label input[type="checkbox"]:hover {
+    border-color: var(--text-muted);
+}
+
+.checkbox-icon {
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+/* === Recurring Actions === */
+.recurring-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+    margin-top: 0.5rem;
+}
+
+.actions-left {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* === Responsive Recurring === */
+@media (max-width: 768px) {
+    .recurring-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .page-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .page-header .btn-primary {
+        width: 100%;
+    }
+    
+    .recurring-meta {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .recurring-notifications {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .recurring-actions {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .actions-left {
+        flex-wrap: wrap;
+    }
+    
+    .actions-left .btn {
+        flex: 1;
+        min-width: calc(50% - 0.25rem);
+    }
+    
+    .recurring-description,
+    .recurring-meta,
+    .recurring-notifications {
+        padding-left: 0;
+    }
+}

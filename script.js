@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSidebars();
     initAgentCards();
     initTerminalInput();
+    initPageNavigation();
 });
 
 // === Sidebar Toggle ===
@@ -12,6 +13,7 @@ function initSidebars() {
     const rightSidebar = document.getElementById('sidebarRight');
     const toggleLeft = document.getElementById('toggleLeft');
     const toggleHistory = document.getElementById('toggleHistory');
+    const toggleHistoryInner = document.getElementById('toggleHistoryInner');
     
     // Create overlay for mobile
     const overlay = document.createElement('div');
@@ -27,12 +29,27 @@ function initSidebars() {
         });
     }
     
-    // Toggle right sidebar (history)
+    // Toggle right sidebar (history) - from main content
     if (toggleHistory) {
         toggleHistory.addEventListener('click', () => {
             const isOpen = rightSidebar.classList.toggle('open');
             overlay.classList.toggle('active', isOpen);
             toggleHistory.classList.toggle('active', isOpen);
+            if (toggleHistoryInner) {
+                toggleHistoryInner.classList.toggle('active', isOpen);
+            }
+        });
+    }
+    
+    // Toggle right sidebar (history) - from inside sidebar
+    if (toggleHistoryInner) {
+        toggleHistoryInner.addEventListener('click', () => {
+            rightSidebar.classList.remove('open');
+            overlay.classList.remove('active');
+            if (toggleHistory) {
+                toggleHistory.classList.remove('active');
+            }
+            toggleHistoryInner.classList.remove('active');
         });
     }
     
@@ -41,7 +58,8 @@ function initSidebars() {
         leftSidebar.classList.remove('open');
         rightSidebar.classList.remove('open');
         overlay.classList.remove('active');
-        toggleHistory.classList.remove('active');
+        if (toggleHistory) toggleHistory.classList.remove('active');
+        if (toggleHistoryInner) toggleHistoryInner.classList.remove('active');
     });
     
     // Handle responsive behavior
@@ -54,6 +72,32 @@ function initSidebars() {
     window.addEventListener('resize', handleResize);
 }
 
+// === Page Navigation ===
+function initPageNavigation() {
+    const navItems = document.querySelectorAll('.nav-item[data-page]');
+    const pages = document.querySelectorAll('.page');
+    
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const targetPage = item.dataset.page;
+            
+            // Update active nav item
+            navItems.forEach(nav => nav.classList.remove('active'));
+            item.classList.add('active');
+            
+            // Show target page
+            pages.forEach(page => {
+                page.classList.remove('active');
+                if (page.id === `page-${targetPage}`) {
+                    page.classList.add('active');
+                }
+            });
+        });
+    });
+}
+
 // === Agent Cards Expansion ===
 function initAgentCards() {
     const agentCards = document.querySelectorAll('.agent-card');
@@ -62,11 +106,6 @@ function initAgentCards() {
         const header = card.querySelector('.agent-header');
         
         header.addEventListener('click', () => {
-            // Close other cards (optional - remove if you want multiple open)
-            // agentCards.forEach(c => {
-            //     if (c !== card) c.classList.remove('expanded');
-            // });
-            
             card.classList.toggle('expanded');
         });
     });
@@ -80,8 +119,6 @@ function initTerminalInput() {
         input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && input.value.trim()) {
                 handleCommand(input.value.trim());
-                // For demo purposes, clear input
-                // input.value = '';
             }
         });
         
@@ -93,8 +130,6 @@ function initTerminalInput() {
 // === Command Handler (placeholder) ===
 function handleCommand(command) {
     console.log('Command submitted:', command);
-    
-    // Add to history (demo - would normally call API)
     addToHistory(command);
 }
 
@@ -121,7 +156,6 @@ function addToHistory(query) {
         <span class="history-date">${dateStr}</span>
     `;
     
-    // Insert at the beginning
     historyList.insertBefore(historyItem, historyList.firstChild);
 }
 
@@ -132,16 +166,7 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-// === Navigation Active State ===
-document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-    });
-});
-
-// === Search Functionality (placeholder) ===
+// === Search Functionality ===
 const searchInput = document.querySelector('.search-input');
 if (searchInput) {
     searchInput.addEventListener('input', (e) => {
