@@ -232,7 +232,7 @@
                         </button>
                     </div>
 
-                    <div class="recurring-list">
+                    <div class="recurring-grid">
                         <!-- Recurring Prompt Card 1 -->
                         <div class="recurring-card">
                             <div class="recurring-card-header">
@@ -254,72 +254,44 @@
                             </div>
                             <p class="recurring-description">Summary of market sentiment based on news articles and social media signals for the S&P 500</p>
                             
-                            <div class="recurring-meta">
-                                <div class="meta-item">
-                                    <span class="meta-label">Frequency</span>
-                                    <span class="meta-value">Daily at 9:00 AM</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">Last Run</span>
-                                    <span class="meta-value">Dec 17, 9:00 AM</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">Next Run</span>
-                                    <span class="meta-value">Dec 18, 9:00 AM</span>
-                                </div>
+                            <div class="recurring-frequency">
+                                <span class="frequency-label">Frequency</span>
+                                <span class="frequency-value">Daily at 9:00 AM</span>
                             </div>
 
                             <div class="recurring-notifications">
                                 <label class="checkbox-label">
                                     <input type="checkbox" checked>
                                     <span class="checkbox-custom"></span>
-                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
-                                        <path d="M22 6l-10 7L2 6"/>
-                                    </svg>
-                                    <span>Email notifications</span>
+                                    <span>Email</span>
                                 </label>
                                 <label class="checkbox-label">
                                     <input type="checkbox" checked>
                                     <span class="checkbox-custom"></span>
-                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-                                    </svg>
-                                    <span>In-app notifications</span>
+                                    <span>In-app</span>
                                 </label>
                             </div>
 
                             <div class="recurring-actions">
-                                <div class="actions-left">
-                                    <button class="btn btn-outline">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                                        </svg>
-                                        <span>Edit Prompt</span>
-                                    </button>
-                                    <button class="btn btn-outline">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <circle cx="12" cy="12" r="10"/>
-                                            <polyline points="12,6 12,12 16,14"/>
-                                        </svg>
-                                        <span>Change Frequency</span>
-                                    </button>
-                                    <button class="btn btn-outline">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M23 4v6h-6"/>
-                                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
-                                        </svg>
-                                        <span>View History</span>
-                                    </button>
-                                </div>
+                                <button class="btn btn-outline">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                    </svg>
+                                    <span>Edit</span>
+                                </button>
+                                <button class="btn btn-outline">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M23 4v6h-6"/>
+                                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                                    </svg>
+                                    <span>History</span>
+                                </button>
                                 <button class="btn btn-ghost btn-danger">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="3,6 5,6 21,6"/>
                                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                                     </svg>
-                                    <span>Delete</span>
                                 </button>
                             </div>
                         </div>
@@ -343,74 +315,46 @@
                                     </svg>
                                 </button>
                             </div>
-                            <p class="recurring-description">Analysis of implied vs. realized volatility for front-month corn futures contracts, highlighting potential trading opportunities</p>
+                            <p class="recurring-description">Analysis of implied vs. realized volatility for front-month corn futures contracts</p>
                             
-                            <div class="recurring-meta">
-                                <div class="meta-item">
-                                    <span class="meta-label">Frequency</span>
-                                    <span class="meta-value">Daily at 8:30 AM</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">Last Run</span>
-                                    <span class="meta-value">Dec 17, 8:30 AM</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">Next Run</span>
-                                    <span class="meta-value">Dec 18, 8:30 AM</span>
-                                </div>
+                            <div class="recurring-frequency">
+                                <span class="frequency-label">Frequency</span>
+                                <span class="frequency-value">Daily at 8:30 AM</span>
                             </div>
 
                             <div class="recurring-notifications">
                                 <label class="checkbox-label">
                                     <input type="checkbox" checked>
                                     <span class="checkbox-custom"></span>
-                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
-                                        <path d="M22 6l-10 7L2 6"/>
-                                    </svg>
-                                    <span>Email notifications</span>
+                                    <span>Email</span>
                                 </label>
                                 <label class="checkbox-label">
                                     <input type="checkbox">
                                     <span class="checkbox-custom"></span>
-                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-                                    </svg>
-                                    <span>In-app notifications</span>
+                                    <span>In-app</span>
                                 </label>
                             </div>
 
                             <div class="recurring-actions">
-                                <div class="actions-left">
-                                    <button class="btn btn-outline">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                                        </svg>
-                                        <span>Edit Prompt</span>
-                                    </button>
-                                    <button class="btn btn-outline">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <circle cx="12" cy="12" r="10"/>
-                                            <polyline points="12,6 12,12 16,14"/>
-                                        </svg>
-                                        <span>Change Frequency</span>
-                                    </button>
-                                    <button class="btn btn-outline">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M23 4v6h-6"/>
-                                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
-                                        </svg>
-                                        <span>View History</span>
-                                    </button>
-                                </div>
+                                <button class="btn btn-outline">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                    </svg>
+                                    <span>Edit</span>
+                                </button>
+                                <button class="btn btn-outline">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M23 4v6h-6"/>
+                                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                                    </svg>
+                                    <span>History</span>
+                                </button>
                                 <button class="btn btn-ghost btn-danger">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="3,6 5,6 21,6"/>
                                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                                     </svg>
-                                    <span>Delete</span>
                                 </button>
                             </div>
                         </div>
@@ -434,74 +378,46 @@
                                     </svg>
                                 </button>
                             </div>
-                            <p class="recurring-description">Comprehensive analysis of weekly corn export sales, shipments, and outstanding commitments by destination</p>
+                            <p class="recurring-description">Comprehensive analysis of weekly corn export sales, shipments, and commitments</p>
                             
-                            <div class="recurring-meta">
-                                <div class="meta-item">
-                                    <span class="meta-label">Frequency</span>
-                                    <span class="meta-value">Weekly on Mondays at 10:00 AM</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">Last Run</span>
-                                    <span class="meta-value">Dec 16, 10:00 AM</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">Next Run</span>
-                                    <span class="meta-value">Dec 23, 10:00 AM</span>
-                                </div>
+                            <div class="recurring-frequency">
+                                <span class="frequency-label">Frequency</span>
+                                <span class="frequency-value">Weekly on Mondays at 10:00 AM</span>
                             </div>
 
                             <div class="recurring-notifications">
                                 <label class="checkbox-label">
                                     <input type="checkbox">
                                     <span class="checkbox-custom"></span>
-                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
-                                        <path d="M22 6l-10 7L2 6"/>
-                                    </svg>
-                                    <span>Email notifications</span>
+                                    <span>Email</span>
                                 </label>
                                 <label class="checkbox-label">
                                     <input type="checkbox" checked>
                                     <span class="checkbox-custom"></span>
-                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-                                    </svg>
-                                    <span>In-app notifications</span>
+                                    <span>In-app</span>
                                 </label>
                             </div>
 
                             <div class="recurring-actions">
-                                <div class="actions-left">
-                                    <button class="btn btn-outline">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                                        </svg>
-                                        <span>Edit Prompt</span>
-                                    </button>
-                                    <button class="btn btn-outline">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <circle cx="12" cy="12" r="10"/>
-                                            <polyline points="12,6 12,12 16,14"/>
-                                        </svg>
-                                        <span>Change Frequency</span>
-                                    </button>
-                                    <button class="btn btn-outline">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M23 4v6h-6"/>
-                                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
-                                        </svg>
-                                        <span>View History</span>
-                                    </button>
-                                </div>
+                                <button class="btn btn-outline">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                    </svg>
+                                    <span>Edit</span>
+                                </button>
+                                <button class="btn btn-outline">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M23 4v6h-6"/>
+                                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                                    </svg>
+                                    <span>History</span>
+                                </button>
                                 <button class="btn btn-ghost btn-danger">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="3,6 5,6 21,6"/>
                                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                                     </svg>
-                                    <span>Delete</span>
                                 </button>
                             </div>
                         </div>
@@ -525,74 +441,46 @@
                                     </svg>
                                 </button>
                             </div>
-                            <p class="recurring-description">Deep dive into CFTC Commitment of Traders data, analyzing net positioning changes across managed money and commercials</p>
+                            <p class="recurring-description">Deep dive into CFTC Commitment of Traders data and positioning changes</p>
                             
-                            <div class="recurring-meta">
-                                <div class="meta-item">
-                                    <span class="meta-label">Frequency</span>
-                                    <span class="meta-value">Monthly on 1st at 8:00 AM</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">Last Run</span>
-                                    <span class="meta-value">Dec 1, 8:00 AM</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">Next Run</span>
-                                    <span class="meta-value">Jan 1, 8:00 AM</span>
-                                </div>
+                            <div class="recurring-frequency">
+                                <span class="frequency-label">Frequency</span>
+                                <span class="frequency-value">Monthly on 1st at 8:00 AM</span>
                             </div>
 
                             <div class="recurring-notifications">
                                 <label class="checkbox-label">
                                     <input type="checkbox" checked>
                                     <span class="checkbox-custom"></span>
-                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
-                                        <path d="M22 6l-10 7L2 6"/>
-                                    </svg>
-                                    <span>Email notifications</span>
+                                    <span>Email</span>
                                 </label>
                                 <label class="checkbox-label">
                                     <input type="checkbox" checked>
                                     <span class="checkbox-custom"></span>
-                                    <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-                                    </svg>
-                                    <span>In-app notifications</span>
+                                    <span>In-app</span>
                                 </label>
                             </div>
 
                             <div class="recurring-actions">
-                                <div class="actions-left">
-                                    <button class="btn btn-outline">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                                        </svg>
-                                        <span>Edit Prompt</span>
-                                    </button>
-                                    <button class="btn btn-outline">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <circle cx="12" cy="12" r="10"/>
-                                            <polyline points="12,6 12,12 16,14"/>
-                                        </svg>
-                                        <span>Change Frequency</span>
-                                    </button>
-                                    <button class="btn btn-outline">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M23 4v6h-6"/>
-                                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
-                                        </svg>
-                                        <span>View History</span>
-                                    </button>
-                                </div>
+                                <button class="btn btn-outline">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                    </svg>
+                                    <span>Edit</span>
+                                </button>
+                                <button class="btn btn-outline">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M23 4v6h-6"/>
+                                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                                    </svg>
+                                    <span>History</span>
+                                </button>
                                 <button class="btn btn-ghost btn-danger">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="3,6 5,6 21,6"/>
                                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                                     </svg>
-                                    <span>Delete</span>
                                 </button>
                             </div>
                         </div>
