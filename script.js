@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPageNavigation();
     initEditModal();
     initResultsPage();
+    initRecentResults();
 });
 
 // === Sidebar Toggle ===
@@ -180,6 +181,81 @@ if (searchInput) {
             item.style.display = title.includes(query) ? 'flex' : 'none';
         });
     });
+}
+
+// === Recent Results Cards ===
+function initRecentResults() {
+    const section = document.getElementById('recentResultsSection');
+    if (!section) return;
+    
+    // Handle close button clicks
+    section.addEventListener('click', (e) => {
+        const closeBtn = e.target.closest('.card-close-btn');
+        if (closeBtn) {
+            e.preventDefault();
+            const card = closeBtn.closest('.recent-result-card');
+            dismissCard(card);
+        }
+        
+        // Handle View Full Result button
+        const viewBtn = e.target.closest('.btn-view-full');
+        if (viewBtn) {
+            e.preventDefault();
+            const card = viewBtn.closest('.recent-result-card');
+            viewFullResult(card);
+        }
+    });
+}
+
+// Dismiss a recent result card with animation
+function dismissCard(card) {
+    card.style.opacity = '0';
+    card.style.transform = 'scale(0.95)';
+    card.style.transition = 'all 0.2s ease';
+    
+    setTimeout(() => {
+        card.style.width = card.offsetWidth + 'px';
+        card.style.padding = '0';
+        card.style.margin = '0';
+        card.style.border = 'none';
+        card.style.overflow = 'hidden';
+        
+        requestAnimationFrame(() => {
+            card.style.width = '0';
+            card.style.minWidth = '0';
+            card.style.flex = '0 0 0';
+            card.style.marginRight = '0';
+        });
+        
+        setTimeout(() => {
+            card.remove();
+            checkEmptyCarousel();
+        }, 200);
+    }, 200);
+}
+
+// Check if carousel is empty and hide section
+function checkEmptyCarousel() {
+    const section = document.getElementById('recentResultsSection');
+    const cards = section?.querySelectorAll('.recent-result-card');
+    
+    if (cards && cards.length === 0) {
+        section.style.display = 'none';
+    }
+}
+
+// View full result - mark as read and show result
+function viewFullResult(card) {
+    // Mark as read
+    card.classList.remove('unread');
+    
+    // Get prompt info and navigate to results (you could expand this)
+    const promptName = card.querySelector('.recent-result-prompt')?.textContent || '';
+    
+    console.log('Viewing full result for:', promptName);
+    
+    // For now, show an alert - in a real app this would navigate to the full result
+    // You could integrate this with the existing results page
 }
 
 // === Edit Modal ===
