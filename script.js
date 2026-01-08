@@ -244,18 +244,12 @@ function checkEmptyCarousel() {
     }
 }
 
-// View full result - mark as read and show result
+// View full result
 function viewFullResult(card) {
-    // Mark as read
-    card.classList.remove('unread');
-    
-    // Get prompt info and navigate to results (you could expand this)
     const promptName = card.querySelector('.recent-result-prompt')?.textContent || '';
-    
     console.log('Viewing full result for:', promptName);
     
-    // For now, show an alert - in a real app this would navigate to the full result
-    // You could integrate this with the existing results page
+    // In a real app this would navigate to the full result page
 }
 
 // === Edit Modal ===
