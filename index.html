@@ -93,7 +93,12 @@
                 <section class="recent-results-section" id="recentResultsSection">
                     <div class="recent-results-header">
                         <h2 class="recent-results-title">Today's Recurring Prompts</h2>
-                        <button class="btn-dismiss-all" id="dismissAllBtn">Dismiss All</button>
+                    </div>
+                    
+                    <!-- Empty State -->
+                    <div class="recent-results-empty" id="recentResultsEmpty" style="display: none;">
+                        <span class="empty-text">No recurring prompts yet.</span>
+                        <a href="#" class="empty-cta" data-page="recurring">Create one →</a>
                     </div>
                     <div class="recent-results-carousel">
                         <div class="recent-result-card" data-prompt="market-sentiment">

@@ -270,19 +270,28 @@ body {
     text-transform: uppercase;
 }
 
-.btn-dismiss-all {
-    background: none;
-    border: none;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.6875rem;
-    font-weight: 500;
+.recent-results-empty {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.empty-text {
+    font-size: 0.75rem;
     color: var(--text-muted);
-    cursor: pointer;
+}
+
+.empty-cta {
+    font-size: 0.75rem;
+    color: var(--accent-primary);
+    text-decoration: none;
     transition: color var(--transition-fast);
 }
 
-.btn-dismiss-all:hover {
+.empty-cta:hover {
     color: var(--text-primary);
+    text-decoration: underline;
 }
 
 .recent-results-carousel {

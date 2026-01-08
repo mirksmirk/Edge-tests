@@ -204,15 +204,17 @@ function initRecentResults() {
             const card = viewBtn.closest('.recent-result-card');
             viewFullResult(card);
         }
+        
+        // Handle empty state CTA
+        const emptyCta = e.target.closest('.empty-cta');
+        if (emptyCta) {
+            e.preventDefault();
+            const page = emptyCta.dataset.page;
+            if (page) {
+                navigateToPage(page);
+            }
+        }
     });
-    
-    // Handle Dismiss All button
-    const dismissAllBtn = document.getElementById('dismissAllBtn');
-    if (dismissAllBtn) {
-        dismissAllBtn.addEventListener('click', () => {
-            dismissAllCards();
-        });
-    }
 }
 
 // Dismiss a recent result card with animation
@@ -242,31 +244,17 @@ function dismissCard(card) {
     }, 200);
 }
 
-// Check if carousel is empty and hide section
+// Check if carousel is empty and show empty state
 function checkEmptyCarousel() {
     const section = document.getElementById('recentResultsSection');
+    const carousel = section?.querySelector('.recent-results-carousel');
+    const emptyState = document.getElementById('recentResultsEmpty');
     const cards = section?.querySelectorAll('.recent-result-card');
     
-    if (cards && cards.length === 0) {
-        hideSection(section);
+    if (cards && cards.length === 0 && carousel && emptyState) {
+        carousel.style.display = 'none';
+        emptyState.style.display = 'flex';
     }
-}
-
-// Hide section with animation
-function hideSection(section) {
-    section.style.opacity = '0';
-    section.style.transition = 'opacity 0.2s ease';
-    setTimeout(() => {
-        section.style.display = 'none';
-    }, 200);
-}
-
-// Dismiss all cards and hide section
-function dismissAllCards() {
-    const section = document.getElementById('recentResultsSection');
-    if (!section) return;
-    
-    hideSection(section);
 }
 
 // View full result
