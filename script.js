@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initAgentCards();
     initTerminalInput();
     initPageNavigation();
+    initEditModal();
 });
 
 // === Sidebar Toggle ===
@@ -178,4 +179,163 @@ if (searchInput) {
             item.style.display = title.includes(query) ? 'flex' : 'none';
         });
     });
+}
+
+// === Edit Modal ===
+function initEditModal() {
+    const modal = document.getElementById('editModal');
+    const closeBtn = document.getElementById('closeModal');
+    const cancelBtn = document.getElementById('cancelModal');
+    const saveBtn = document.getElementById('saveModal');
+    
+    // Store reference to currently editing card
+    let currentCard = null;
+    
+    // Open modal when clicking Edit button on any recurring card
+    document.addEventListener('click', (e) => {
+        const editBtn = e.target.closest('.recurring-actions .btn-outline');
+        if (editBtn && editBtn.querySelector('span')?.textContent === 'Edit') {
+            e.preventDefault();
+            currentCard = editBtn.closest('.recurring-card');
+            openEditModal(currentCard);
+        }
+    });
+    
+    // Close modal functions
+    function closeModal() {
+        modal.classList.remove('active');
+        currentCard = null;
+    }
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+    
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', closeModal);
+    }
+    
+    // Close on overlay click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+    
+    // Save changes
+    if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+            if (currentCard) {
+                saveChanges(currentCard);
+            }
+            closeModal();
+        });
+    }
+}
+
+// Open modal and populate with card data
+function openEditModal(card) {
+    const modal = document.getElementById('editModal');
+    
+    // Get card data
+    const title = card.querySelector('.recurring-title')?.textContent || '';
+    const description = card.querySelector('.recurring-description')?.textContent || '';
+    const frequency = card.querySelector('.frequency-value')?.textContent || '';
+    const emailChecked = card.querySelector('.recurring-notifications input:first-of-type')?.checked || false;
+    const inAppChecked = card.querySelector('.recurring-notifications input:last-of-type')?.checked || false;
+    
+    // Populate form fields
+    document.getElementById('promptTitle').value = title;
+    document.getElementById('promptText').value = description;
+    document.getElementById('emailNotif').checked = emailChecked;
+    document.getElementById('inAppNotif').checked = inAppChecked;
+    
+    // Parse frequency and set values
+    const frequencySelect = document.getElementById('frequency');
+    const timeInput = document.getElementById('notificationTime');
+    
+    if (frequency.toLowerCase().includes('daily')) {
+        frequencySelect.value = 'daily';
+    } else if (frequency.toLowerCase().includes('weekly')) {
+        frequencySelect.value = 'weekly';
+    } else if (frequency.toLowerCase().includes('monthly')) {
+        frequencySelect.value = 'monthly';
+    }
+    
+    // Extract time from frequency string (e.g., "Daily at 9:00 AM")
+    const timeMatch = frequency.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (timeMatch) {
+        let hours = parseInt(timeMatch[1]);
+        const minutes = timeMatch[2];
+        const period = timeMatch[3].toUpperCase();
+        
+        if (period === 'PM' && hours !== 12) hours += 12;
+        if (period === 'AM' && hours === 12) hours = 0;
+        
+        timeInput.value = `${hours.toString().padStart(2, '0')}:${minutes}`;
+    }
+    
+    // Set default start date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('startDate').value = today;
+    
+    // Show modal
+    modal.classList.add('active');
+    
+    // Focus first input
+    setTimeout(() => {
+        document.getElementById('promptTitle').focus();
+    }, 100);
+}
+
+// Save changes back to card
+function saveChanges(card) {
+    const title = document.getElementById('promptTitle').value;
+    const description = document.getElementById('promptText').value;
+    const frequency = document.getElementById('frequency').value;
+    const startDate = document.getElementById('startDate').value;
+    const time = document.getElementById('notificationTime').value;
+    const emailNotif = document.getElementById('emailNotif').checked;
+    const inAppNotif = document.getElementById('inAppNotif').checked;
+    
+    // Format time for display
+    let displayTime = '';
+    if (time) {
+        const [hours, minutes] = time.split(':');
+        const h = parseInt(hours);
+        const period = h >= 12 ? 'PM' : 'AM';
+        const displayHour = h > 12 ? h - 12 : (h === 0 ? 12 : h);
+        displayTime = `${displayHour}:${minutes} ${period}`;
+    }
+    
+    // Format frequency for display
+    const frequencyLabels = {
+        daily: 'Daily',
+        weekly: 'Weekly',
+        biweekly: 'Bi-weekly',
+        monthly: 'Monthly'
+    };
+    const frequencyDisplay = `${frequencyLabels[frequency]} at ${displayTime}`;
+    
+    // Update card
+    const titleEl = card.querySelector('.recurring-title');
+    const descEl = card.querySelector('.recurring-description');
+    const freqEl = card.querySelector('.frequency-value');
+    const emailCheckbox = card.querySelector('.recurring-notifications label:first-of-type input');
+    const inAppCheckbox = card.querySelector('.recurring-notifications label:last-of-type input');
+    
+    if (titleEl) titleEl.textContent = title;
+    if (descEl) descEl.textContent = description;
+    if (freqEl) freqEl.textContent = frequencyDisplay;
+    if (emailCheckbox) emailCheckbox.checked = emailNotif;
+    if (inAppCheckbox) inAppCheckbox.checked = inAppNotif;
+    
+    console.log('Saved changes:', { title, description, frequency, startDate, time, emailNotif, inAppNotif });
 }
