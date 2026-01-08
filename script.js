@@ -205,6 +205,14 @@ function initRecentResults() {
             viewFullResult(card);
         }
     });
+    
+    // Handle Dismiss All button
+    const dismissAllBtn = document.getElementById('dismissAllBtn');
+    if (dismissAllBtn) {
+        dismissAllBtn.addEventListener('click', () => {
+            dismissAllCards();
+        });
+    }
 }
 
 // Dismiss a recent result card with animation
@@ -240,8 +248,25 @@ function checkEmptyCarousel() {
     const cards = section?.querySelectorAll('.recent-result-card');
     
     if (cards && cards.length === 0) {
-        section.style.display = 'none';
+        hideSection(section);
     }
+}
+
+// Hide section with animation
+function hideSection(section) {
+    section.style.opacity = '0';
+    section.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => {
+        section.style.display = 'none';
+    }, 200);
+}
+
+// Dismiss all cards and hide section
+function dismissAllCards() {
+    const section = document.getElementById('recentResultsSection');
+    if (!section) return;
+    
+    hideSection(section);
 }
 
 // View full result
