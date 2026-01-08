@@ -3,230 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edge Tests</title>
+    <title>EDGE - AI Terminal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="grain-overlay"></div>
-    
-    <nav class="navbar">
-        <div class="nav-brand">
-            <span class="brand-icon">◈</span>
-            <span class="brand-text">Edge Tests</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="https://github.com" class="nav-cta" target="_blank">GitHub</a></li>
-        </ul>
-        <button class="mobile-menu-btn" aria-label="Toggle menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </nav>
-
-    <main>
-        <section class="hero">
-            <div class="hero-bg">
-                <div class="gradient-orb orb-1"></div>
-                <div class="gradient-orb orb-2"></div>
-                <div class="gradient-orb orb-3"></div>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar sidebar-left" id="sidebarLeft">
+            <div class="sidebar-header">
+                <div class="logo">EDGE</div>
+                <button class="sidebar-toggle" id="toggleLeft" aria-label="Toggle sidebar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
             </div>
-            <div class="hero-content">
-                <div class="hero-badge" data-animate>
-                    <span class="badge-dot"></span>
-                    Ready for production
-                </div>
-                <h1 data-animate data-delay="100">
-                    Push boundaries.<br>
-                    <span class="text-gradient">Test the edge.</span>
-                </h1>
-                <p class="hero-description" data-animate data-delay="200">
-                    A modern foundation for building exceptional digital experiences. 
-                    Fast, accessible, and beautifully crafted.
-                </p>
-                <div class="hero-actions" data-animate data-delay="300">
-                    <a href="#features" class="btn btn-primary">
-                        <span>Explore Features</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                    <a href="#about" class="btn btn-secondary">Learn More</a>
-                </div>
-            </div>
-            <div class="hero-visual" data-animate data-delay="400">
-                <div class="code-window">
-                    <div class="window-header">
-                        <div class="window-dots">
-                            <span></span><span></span><span></span>
-                        </div>
-                        <span class="window-title">main.py</span>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="4" y="4" width="16" height="16" rx="2"/>
+                        <path d="M4 9h16"/>
+                        <path d="M9 4v5"/>
+                    </svg>
+                    <span>Terminal</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                    </svg>
+                    <span>Agent Toolkit</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14,2 14,8 20,8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                    <span>Reports</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">EM</div>
+                    <div class="user-info">
+                        <span class="user-name">Elisa Mirkil</span>
+                        <span class="user-email">elisamirkil@gmail.com</span>
                     </div>
-                    <pre class="window-content"><code><span class="code-comment"># Welcome to Edge Tests</span>
-
-<span class="code-keyword">def</span> <span class="code-function">create_magic</span>(idea):
-    <span class="code-string">"""Transform ideas into reality."""</span>
-    <span class="code-keyword">return</span> idea.execute()
-
-<span class="code-keyword">if</span> __name__ == <span class="code-string">'__main__'</span>:
-    create_magic(<span class="code-string">'your_vision'</span>)</code></pre>
-                </div>
-            </div>
-        </section>
-
-        <section id="features" class="features">
-            <div class="section-header">
-                <span class="section-tag">Features</span>
-                <h2>Built for the modern web</h2>
-                <p>Everything you need to create stunning experiences</p>
-            </div>
-            <div class="features-grid">
-                <article class="feature-card" data-animate>
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <h3>Lightning Fast</h3>
-                    <p>Optimized for performance with minimal overhead. Your users will feel the difference.</p>
-                </article>
-                <article class="feature-card" data-animate data-delay="100">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="3" width="18" height="18" rx="2"/>
-                            <path d="M3 9h18M9 21V9"/>
-                        </svg>
-                    </div>
-                    <h3>Responsive Design</h3>
-                    <p>Looks perfect on every device, from mobile phones to ultra-wide monitors.</p>
-                </article>
-                <article class="feature-card" data-animate data-delay="200">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 6v6l4 2"/>
-                        </svg>
-                    </div>
-                    <h3>Future Ready</h3>
-                    <p>Built with modern standards and best practices that will stand the test of time.</p>
-                </article>
-                <article class="feature-card" data-animate data-delay="300">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                    </div>
-                    <h3>Secure by Default</h3>
-                    <p>Security-first approach with built-in protections against common vulnerabilities.</p>
-                </article>
-                <article class="feature-card" data-animate data-delay="400">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                        </svg>
-                    </div>
-                    <h3>Easy to Customize</h3>
-                    <p>Clean, well-documented code that makes customization a breeze.</p>
-                </article>
-                <article class="feature-card" data-animate data-delay="500">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </div>
-                    <h3>Community Driven</h3>
-                    <p>Join a growing community of developers building amazing things together.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="about-content">
-                <span class="section-tag">About</span>
-                <h2>Crafted with care</h2>
-                <p>
-                    Edge Tests is more than just a boilerplate—it's a statement. 
-                    We believe that great software starts with great foundations, 
-                    and every line of code should serve a purpose.
-                </p>
-                <p>
-                    Whether you're building a personal project or the next big thing, 
-                    we've got you covered with clean architecture, modern tooling, 
-                    and a commitment to excellence.
-                </p>
-                <div class="stats">
-                    <div class="stat">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Open Source</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">0</span>
-                        <span class="stat-label">Dependencies</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">∞</span>
-                        <span class="stat-label">Possibilities</span>
-                    </div>
-                </div>
-            </div>
-            <div class="about-visual">
-                <div class="geometric-pattern">
-                    <div class="geo-shape shape-1"></div>
-                    <div class="geo-shape shape-2"></div>
-                    <div class="geo-shape shape-3"></div>
-                    <div class="geo-shape shape-4"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="contact-content">
-                <span class="section-tag">Get Started</span>
-                <h2>Ready to build something amazing?</h2>
-                <p>Clone the repository and start creating today.</p>
-                <div class="terminal-block">
-                    <div class="terminal-header">
-                        <span>Terminal</span>
-                    </div>
-                    <code>git clone https://github.com/your-username/edge-tests.git</code>
-                    <button class="copy-btn" aria-label="Copy command">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2"/>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    <button class="settings-btn" aria-label="Settings">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                         </svg>
                     </button>
                 </div>
             </div>
-        </section>
-    </main>
+        </aside>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <span class="brand-icon">◈</span>
-                <span>Edge Tests</span>
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <h1 class="terminal-logo">EDGE</h1>
+                    <button class="history-btn" id="toggleHistory">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12,6 12,12 16,14"/>
+                        </svg>
+                        <span>History</span>
+                    </button>
+                </div>
+                
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5,3 19,12 5,21 5,3"/>
+                            </svg>
+                        </span>
+                        <input type="text" class="terminal-input" placeholder="What job can I run for you?" />
+                    </div>
+                </div>
+                
+                <section class="agents-section">
+                    <h2 class="section-title">CORE AGENTS</h2>
+                    
+                    <div class="agent-list">
+                        <div class="agent-card" data-agent="market">
+                            <div class="agent-header">
+                                <div class="agent-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M3 3v18h18"/>
+                                        <path d="M7 16l4-4 4 4 5-6"/>
+                                    </svg>
+                                </div>
+                                <div class="agent-info">
+                                    <h3>Market Intelligence</h3>
+                                    <p>For narratives, drivers, positioning, and context</p>
+                                </div>
+                                <button class="expand-btn" aria-label="Expand">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 9l6 6 6-6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="agent-content">
+                                <p>Access real-time market data, sentiment analysis, and contextual insights to inform your trading decisions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="agent-card" data-agent="quant">
+                            <div class="agent-header">
+                                <div class="agent-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                        <path d="M3 9h18"/>
+                                        <path d="M9 3v18"/>
+                                    </svg>
+                                </div>
+                                <div class="agent-info">
+                                    <h3>Quantitative Analysis</h3>
+                                    <p>For historical relationships, distributions, and signals</p>
+                                </div>
+                                <button class="expand-btn" aria-label="Expand">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 9l6 6 6-6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="agent-content">
+                                <p>Analyze historical data patterns, statistical distributions, and generate quantitative signals for systematic trading.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="agent-card" data-agent="scenario">
+                            <div class="agent-header">
+                                <div class="agent-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                        <line x1="12" y1="9" x2="12" y2="13"/>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                    </svg>
+                                </div>
+                                <div class="agent-info">
+                                    <h3>Scenario Testing</h3>
+                                    <p>For hypothetical shocks, paths, and sensitivities</p>
+                                </div>
+                                <button class="expand-btn" aria-label="Expand">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 9l6 6 6-6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="agent-content">
+                                <p>Model hypothetical market scenarios, stress test portfolios, and analyze sensitivity to various risk factors.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="agent-card" data-agent="idea">
+                            <div class="agent-header">
+                                <div class="agent-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M9 18h6"/>
+                                        <path d="M10 22h4"/>
+                                        <path d="M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="agent-info">
+                                    <h3>Idea Generation</h3>
+                                    <p>For trades, structures, hedges, and asymmetry</p>
+                                </div>
+                                <button class="expand-btn" aria-label="Expand">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 9l6 6 6-6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="agent-content">
+                                <p>Generate trade ideas, optimal structures, hedging strategies, and identify asymmetric opportunities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <p>Built with passion. Released with purpose.</p>
-            <div class="footer-links">
-                <a href="https://github.com" target="_blank">GitHub</a>
-                <span class="divider">·</span>
-                <a href="#features">Features</a>
-                <span class="divider">·</span>
-                <a href="#about">About</a>
+        </main>
+
+        <!-- Right Sidebar (History) -->
+        <aside class="sidebar sidebar-right" id="sidebarRight">
+            <div class="sidebar-header">
+                <div class="search-container">
+                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Search..." />
+                </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Edge Tests. All rights reserved.</p>
-        </div>
-    </footer>
+            
+            <div class="history-list">
+                <a href="#" class="history-item">
+                    <span class="history-title">Decompose the drivers behind the soybea...</span>
+                    <span class="history-date">Dec 17, 2:25 PM</span>
+                </a>
+                <a href="#" class="history-item">
+                    <span class="history-title">What happens to corn spreads if ethanol m...</span>
+                    <span class="history-date">Dec 7, 3:23 PM</span>
+                </a>
+                <a href="#" class="history-item">
+                    <span class="history-title">What have been the main drivers of front-...</span>
+                    <span class="history-date">Dec 7, 1:53 PM</span>
+                </a>
+                <a href="#" class="history-item">
+                    <span class="history-title">whats the average 5 year corn futures fron...</span>
+                    <span class="history-date">Dec 5, 9:06 PM</span>
+                </a>
+                <a href="#" class="history-item">
+                    <span class="history-title">give me an excel of 5 year usda beef 90s pr...</span>
+                    <span class="history-date">Dec 5, 9:05 PM</span>
+                </a>
+                <a href="#" class="history-item">
+                    <span class="history-title">whats the average 5 year corn futures fron...</span>
+                    <span class="history-date">Dec 5, 8:40 PM</span>
+                </a>
+                <a href="#" class="history-item">
+                    <span class="history-title">whats the average 5 year corn futures fron...</span>
+                    <span class="history-date">Dec 5, 8:39 PM</span>
+                </a>
+                <a href="#" class="history-item">
+                    <span class="history-title">whats the average 5 year corn futures fron...</span>
+                    <span class="history-date">Dec 5, 8:37 PM</span>
+                </a>
+                <a href="#" class="history-item">
+                    <span class="history-title">latest beef 90s prices</span>
+                    <span class="history-date">Dec 5, 8:20 PM</span>
+                </a>
+                <a href="#" class="history-item">
+                    <span class="history-title">hi</span>
+                    <span class="history-date">Dec 5, 8:16 PM</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <span class="autosave-status">Auto-save enabled • 10 of 10 conversations</span>
+            </div>
+        </aside>
+    </div>
 
     <script src="script.js"></script>
 </body>

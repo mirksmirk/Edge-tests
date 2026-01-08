@@ -1,168 +1,158 @@
-// === Edge Tests - Main JavaScript ===
+// === EDGE Terminal - Main JavaScript ===
 
 document.addEventListener('DOMContentLoaded', () => {
-    initAnimations();
-    initCopyButton();
-    initMobileMenu();
-    initSmoothScroll();
+    initSidebars();
+    initAgentCards();
+    initTerminalInput();
 });
 
-// === Scroll Animations ===
-function initAnimations() {
-    const animatedElements = document.querySelectorAll('[data-animate]');
+// === Sidebar Toggle ===
+function initSidebars() {
+    const leftSidebar = document.getElementById('sidebarLeft');
+    const rightSidebar = document.getElementById('sidebarRight');
+    const toggleLeft = document.getElementById('toggleLeft');
+    const toggleHistory = document.getElementById('toggleHistory');
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const delay = entry.target.dataset.delay || 0;
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, delay);
-                observer.unobserve(entry.target);
-            }
+    // Create overlay for mobile
+    const overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    document.body.appendChild(overlay);
+    
+    // Toggle left sidebar
+    if (toggleLeft) {
+        toggleLeft.addEventListener('click', () => {
+            leftSidebar.classList.toggle('collapsed');
+            toggleLeft.querySelector('svg').style.transform = 
+                leftSidebar.classList.contains('collapsed') ? 'rotate(180deg)' : '';
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+    }
+    
+    // Toggle right sidebar (history)
+    if (toggleHistory) {
+        toggleHistory.addEventListener('click', () => {
+            rightSidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        });
+    }
+    
+    // Close sidebars when clicking overlay
+    overlay.addEventListener('click', () => {
+        leftSidebar.classList.remove('open');
+        rightSidebar.classList.remove('open');
+        overlay.classList.remove('active');
     });
     
-    animatedElements.forEach(el => observer.observe(el));
+    // Handle responsive behavior
+    const handleResize = () => {
+        if (window.innerWidth > 1200) {
+            rightSidebar.classList.remove('open');
+            overlay.classList.remove('active');
+        }
+        if (window.innerWidth > 768) {
+            leftSidebar.classList.remove('open');
+        }
+    };
+    
+    window.addEventListener('resize', handleResize);
 }
 
-// === Copy Button Functionality ===
-function initCopyButton() {
-    const copyBtn = document.querySelector('.copy-btn');
-    const codeBlock = document.querySelector('.terminal-block code');
+// === Agent Cards Expansion ===
+function initAgentCards() {
+    const agentCards = document.querySelectorAll('.agent-card');
     
-    if (copyBtn && codeBlock) {
-        copyBtn.addEventListener('click', async () => {
-            const text = codeBlock.textContent;
-            
-            try {
-                await navigator.clipboard.writeText(text);
-                
-                // Visual feedback
-                copyBtn.innerHTML = `
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="20,6 9,17 4,12"/>
-                    </svg>
-                `;
-                copyBtn.style.color = '#22c55e';
-                
-                setTimeout(() => {
-                    copyBtn.innerHTML = `
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2"/>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                        </svg>
-                    `;
-                    copyBtn.style.color = '';
-                }, 2000);
-            } catch (err) {
-                console.error('Failed to copy:', err);
-            }
-        });
-    }
-}
-
-// === Mobile Menu ===
-function initMobileMenu() {
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (menuBtn && navLinks) {
-        menuBtn.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('mobile-open');
-            menuBtn.classList.toggle('active', isOpen);
-            menuBtn.setAttribute('aria-expanded', isOpen);
-        });
+    agentCards.forEach(card => {
+        const header = card.querySelector('.agent-header');
         
-        // Close menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('mobile-open');
-                menuBtn.classList.remove('active');
-            });
-        });
-    }
-}
-
-// === Smooth Scroll for Anchor Links ===
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+        header.addEventListener('click', () => {
+            // Close other cards (optional - remove if you want multiple open)
+            // agentCards.forEach(c => {
+            //     if (c !== card) c.classList.remove('expanded');
+            // });
             
-            if (target) {
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
+            card.classList.toggle('expanded');
         });
     });
 }
 
-// === Navbar Scroll Effect ===
-let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+// === Terminal Input ===
+function initTerminalInput() {
+    const input = document.querySelector('.terminal-input');
     
-    if (currentScroll > 100) {
-        navbar.style.background = 'rgba(10, 10, 11, 0.95)';
-    } else {
-        navbar.style.background = 'rgba(10, 10, 11, 0.8)';
+    if (input) {
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && input.value.trim()) {
+                handleCommand(input.value.trim());
+                // For demo purposes, clear input
+                // input.value = '';
+            }
+        });
+        
+        // Focus input on page load
+        input.focus();
     }
+}
+
+// === Command Handler (placeholder) ===
+function handleCommand(command) {
+    console.log('Command submitted:', command);
     
-    lastScroll = currentScroll;
+    // Add to history (demo - would normally call API)
+    addToHistory(command);
+}
+
+// === Add to History (demo function) ===
+function addToHistory(query) {
+    const historyList = document.querySelector('.history-list');
+    if (!historyList) return;
+    
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric' 
+    }) + ', ' + now.toLocaleTimeString('en-US', { 
+        hour: 'numeric', 
+        minute: '2-digit',
+        hour12: true 
+    });
+    
+    const historyItem = document.createElement('a');
+    historyItem.href = '#';
+    historyItem.className = 'history-item';
+    historyItem.innerHTML = `
+        <span class="history-title">${escapeHtml(query)}</span>
+        <span class="history-date">${dateStr}</span>
+    `;
+    
+    // Insert at the beginning
+    historyList.insertBefore(historyItem, historyList.firstChild);
+}
+
+// === Utility: Escape HTML ===
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// === Navigation Active State ===
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+    });
 });
 
-// === Add Mobile Menu Styles Dynamically ===
-const mobileStyles = document.createElement('style');
-mobileStyles.textContent = `
-    @media (max-width: 768px) {
-        .nav-links {
-            position: fixed;
-            top: 65px;
-            left: 0;
-            right: 0;
-            flex-direction: column;
-            background: rgba(10, 10, 11, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 2rem;
-            gap: 1.5rem;
-            transform: translateY(-100%);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid var(--border-subtle);
-        }
+// === Search Functionality (placeholder) ===
+const searchInput = document.querySelector('.search-input');
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const historyItems = document.querySelectorAll('.history-item');
         
-        .nav-links.mobile-open {
-            display: flex;
-            transform: translateY(0);
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .mobile-menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        
-        .mobile-menu-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .mobile-menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-    }
-`;
-document.head.appendChild(mobileStyles);
+        historyItems.forEach(item => {
+            const title = item.querySelector('.history-title').textContent.toLowerCase();
+            item.style.display = title.includes(query) ? 'flex' : 'none';
+        });
+    });
+}
