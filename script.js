@@ -297,6 +297,8 @@ function openEditModal(card) {
 }
 
 // === Results Page ===
+let currentResultsData = null; // Store current results page data for editing
+
 function initResultsPage() {
     // Handle Results button click
     document.addEventListener('click', (e) => {
@@ -317,6 +319,14 @@ function initResultsPage() {
             navigateToPage(targetPage);
         }
     });
+    
+    // Handle Edit button on Results page
+    const resultsEditBtn = document.getElementById('resultsEditBtn');
+    if (resultsEditBtn) {
+        resultsEditBtn.addEventListener('click', () => {
+            openEditModalFromResults();
+        });
+    }
 }
 
 // Open results page with card data
@@ -328,6 +338,17 @@ function openResultsPage(card) {
     const totalRuns = card.querySelector('.results-count')?.textContent || '0';
     const emailChecked = card.querySelector('.recurring-notifications label:first-of-type input')?.checked || false;
     const inAppChecked = card.querySelector('.recurring-notifications label:last-of-type input')?.checked || false;
+    
+    // Store current data for editing
+    currentResultsData = {
+        card: card,
+        title: title,
+        description: description,
+        frequency: frequency,
+        totalRuns: totalRuns,
+        emailChecked: emailChecked,
+        inAppChecked: inAppChecked
+    };
     
     // Populate results page
     document.getElementById('resultsBreadcrumbTitle').textContent = title;
@@ -349,6 +370,57 @@ function openResultsPage(card) {
     
     // Navigate to results page
     navigateToPage('results');
+}
+
+// Open edit modal from Results page
+function openEditModalFromResults() {
+    if (!currentResultsData) return;
+    
+    const modal = document.getElementById('editModal');
+    
+    // Populate form fields with current results data
+    document.getElementById('promptTitle').value = currentResultsData.title;
+    document.getElementById('promptText').value = currentResultsData.description;
+    document.getElementById('emailNotif').checked = currentResultsData.emailChecked;
+    document.getElementById('inAppNotif').checked = currentResultsData.inAppChecked;
+    
+    // Parse frequency and set values
+    const frequencySelect = document.getElementById('frequency');
+    const timeInput = document.getElementById('notificationTime');
+    const frequency = currentResultsData.frequency;
+    
+    if (frequency.toLowerCase().includes('daily')) {
+        frequencySelect.value = 'daily';
+    } else if (frequency.toLowerCase().includes('weekly')) {
+        frequencySelect.value = 'weekly';
+    } else if (frequency.toLowerCase().includes('monthly')) {
+        frequencySelect.value = 'monthly';
+    }
+    
+    // Extract time from frequency string
+    const timeMatch = frequency.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (timeMatch) {
+        let hours = parseInt(timeMatch[1]);
+        const minutes = timeMatch[2];
+        const period = timeMatch[3].toUpperCase();
+        
+        if (period === 'PM' && hours !== 12) hours += 12;
+        if (period === 'AM' && hours === 12) hours = 0;
+        
+        timeInput.value = `${hours.toString().padStart(2, '0')}:${minutes}`;
+    }
+    
+    // Set default start date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('startDate').value = today;
+    
+    // Show modal
+    modal.classList.add('active');
+    
+    // Focus first input
+    setTimeout(() => {
+        document.getElementById('promptTitle').focus();
+    }, 100);
 }
 
 // Navigate to a specific page
@@ -382,7 +454,7 @@ function navigateToPage(pageName) {
     }
 }
 
-// Save changes back to card
+// Save changes back to card and results page
 function saveChanges(card) {
     const title = document.getElementById('promptTitle').value;
     const description = document.getElementById('promptText').value;
@@ -411,18 +483,57 @@ function saveChanges(card) {
     };
     const frequencyDisplay = `${frequencyLabels[frequency]} at ${displayTime}`;
     
-    // Update card
-    const titleEl = card.querySelector('.recurring-title');
-    const descEl = card.querySelector('.recurring-description');
-    const freqEl = card.querySelector('.frequency-value');
-    const emailCheckbox = card.querySelector('.recurring-notifications label:first-of-type input');
-    const inAppCheckbox = card.querySelector('.recurring-notifications label:last-of-type input');
+    // Update card if provided
+    if (card) {
+        const titleEl = card.querySelector('.recurring-title');
+        const descEl = card.querySelector('.recurring-description');
+        const freqEl = card.querySelector('.frequency-value');
+        const emailCheckbox = card.querySelector('.recurring-notifications label:first-of-type input');
+        const inAppCheckbox = card.querySelector('.recurring-notifications label:last-of-type input');
+        
+        if (titleEl) titleEl.textContent = title;
+        if (descEl) descEl.textContent = description;
+        if (freqEl) freqEl.textContent = frequencyDisplay;
+        if (emailCheckbox) emailCheckbox.checked = emailNotif;
+        if (inAppCheckbox) inAppCheckbox.checked = inAppNotif;
+    }
     
-    if (titleEl) titleEl.textContent = title;
-    if (descEl) descEl.textContent = description;
-    if (freqEl) freqEl.textContent = frequencyDisplay;
-    if (emailCheckbox) emailCheckbox.checked = emailNotif;
-    if (inAppCheckbox) inAppCheckbox.checked = inAppNotif;
+    // Update results page if we're viewing it
+    if (currentResultsData) {
+        document.getElementById('resultsBreadcrumbTitle').textContent = title;
+        document.getElementById('resultsTitle').textContent = title;
+        document.getElementById('resultsDescription').textContent = description;
+        document.getElementById('resultsFrequency').textContent = frequencyDisplay;
+        
+        const emailBadge = document.getElementById('resultsEmailBadge');
+        const inAppBadge = document.getElementById('resultsInAppBadge');
+        
+        if (emailBadge) emailBadge.classList.toggle('active', emailNotif);
+        if (inAppBadge) inAppBadge.classList.toggle('active', inAppNotif);
+        
+        // Update stored data
+        currentResultsData.title = title;
+        currentResultsData.description = description;
+        currentResultsData.frequency = frequencyDisplay;
+        currentResultsData.emailChecked = emailNotif;
+        currentResultsData.inAppChecked = inAppNotif;
+        
+        // Also update the original card
+        if (currentResultsData.card) {
+            const origCard = currentResultsData.card;
+            const titleEl = origCard.querySelector('.recurring-title');
+            const descEl = origCard.querySelector('.recurring-description');
+            const freqEl = origCard.querySelector('.frequency-value');
+            const emailCheckbox = origCard.querySelector('.recurring-notifications label:first-of-type input');
+            const inAppCheckbox = origCard.querySelector('.recurring-notifications label:last-of-type input');
+            
+            if (titleEl) titleEl.textContent = title;
+            if (descEl) descEl.textContent = description;
+            if (freqEl) freqEl.textContent = frequencyDisplay;
+            if (emailCheckbox) emailCheckbox.checked = emailNotif;
+            if (inAppCheckbox) inAppCheckbox.checked = inAppNotif;
+        }
+    }
     
     console.log('Saved changes:', { title, description, frequency, startDate, time, emailNotif, inAppNotif });
 }
