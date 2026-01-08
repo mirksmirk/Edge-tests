@@ -30,8 +30,9 @@ function initSidebars() {
     // Toggle right sidebar (history)
     if (toggleHistory) {
         toggleHistory.addEventListener('click', () => {
-            rightSidebar.classList.toggle('open');
-            overlay.classList.toggle('active');
+            const isOpen = rightSidebar.classList.toggle('open');
+            overlay.classList.toggle('active', isOpen);
+            toggleHistory.classList.toggle('active', isOpen);
         });
     }
     
@@ -40,14 +41,11 @@ function initSidebars() {
         leftSidebar.classList.remove('open');
         rightSidebar.classList.remove('open');
         overlay.classList.remove('active');
+        toggleHistory.classList.remove('active');
     });
     
     // Handle responsive behavior
     const handleResize = () => {
-        if (window.innerWidth > 1200) {
-            rightSidebar.classList.remove('open');
-            overlay.classList.remove('active');
-        }
         if (window.innerWidth > 768) {
             leftSidebar.classList.remove('open');
         }
